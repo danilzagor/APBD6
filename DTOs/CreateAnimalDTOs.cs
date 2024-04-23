@@ -4,7 +4,7 @@ namespace APBD6.DTOs;
 
 public record CreateAnimalRequest(
     [Required] [MaxLength(50)] string Name,
-    [Required] [MaxLength(50)] string Description,
+    [MaxLength(50)] string Description,
     [Required] [MaxLength(50)] string Category,
     [Required] [MaxLength(50)] string Area
 );

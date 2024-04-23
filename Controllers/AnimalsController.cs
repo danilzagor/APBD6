@@ -62,25 +62,6 @@ public class AnimalsController : ControllerBase
         var sql = "SELECT * FROM Animal WHERE IdAnimal = @Id";
         using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("Default")))
         {
-            // var sqlCommand = new SqlCommand("SELECT * FROM Animal WHERE ID = @1", sqlConnection);
-            // sqlCommand.Parameters.AddWithValue("@1", id);
-            // sqlCommand.Connection.Open();
-            //
-            
-            // var reader = sqlCommand.ExecuteReader();
-            // if (!reader.Read()) return NotFound();
-            //
-            // while (reader.Read())
-            // {
-            //     response.Add(new GetAllAnimalsResponse(
-            //             reader.GetInt32(0),
-            //             reader.GetString(1),
-            //             reader.GetString(2),
-            //             reader.GetString(3),
-            //             reader.GetString(3)
-            //         )
-            //     );
-            // }
             var parameters = new { Id = id };
             sqlConnection.Open();
             response = sqlConnection.Query<GetAllAnimalsResponse>(sql, parameters).ToList();
